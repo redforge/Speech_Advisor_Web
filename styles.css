@@ -1,0 +1,140 @@
+:root {
+  --bad-color: #F44;
+  --med-color: #EC5;
+  --good-color: #4D4;
+  --med-grad: linear-gradient(#DD4, #FA5);
+  --graph-height: 30vh;
+  --graph-width: 25vw;
+  --graph-heading-height: 55px;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#content-container {
+  display: block;
+  font-family: sans-serif;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+#sidebar {
+  padding: 0;
+  margin: 0;
+  display: block;
+  float: right;
+  width: 25%;
+  height: 100%;
+  background-color: #445;
+}
+#sidebar h2, h3{
+  color: white;
+  font-size: 30px;
+  max-height: var(--graph-heading-height);
+  margin: 10px;
+  float: left;
+}
+#sidebar h3 {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+.chart {
+  clear: both;
+  display: block;
+  height: var(--graph-height);
+  background-color: white;
+}
+.chart-fill {
+  clear: both;
+  position: absolute;
+  width: var(--graph-width);
+  height: var(--graph-height);
+  background: linear-gradient(
+    var(--bad-color),
+    var(--med-color),
+    var(--good-color),
+    var(--med-color),
+    var(--bad-color));
+  mix-blend-mode: screen;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.shaded-display {
+  width: 100%;
+  height: var(--graph-heading-height);
+}
+.shaded-display.bad {
+  background: linear-gradient(
+    var(--med-color) -50%,
+    var(--bad-color));
+}
+.shaded-display.med {
+  background: var(--med-grad);
+}
+.shaded-display.good {
+  background: linear-gradient(
+    var(--good-color),
+    var(--med-color) 150%);
+}
+
+
+#transcript-container {
+  position: absolute;
+  left: 7.5%;
+  top: 20px;
+  width: 60%;
+  font-size: 20px;
+  line-height: 60px;
+}
+
+.dark {
+  color: black;
+}
+
+.correction {
+  transition-duration: 0.1s;
+  position: absolute;
+  color: var(--bad-color);
+  background-color: #EEE;
+  border: 1px solid var(--bad-color);
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  padding: 2px 5px;
+}
+.correction:hover {
+  box-shadow: 0.5px 0.5px 5px 0 grey;
+  z-index: 10;
+}
+.correction.medium {
+  color: var(--med-color);
+  border-color: var(--med-color);
+}
+
+.intrim {
+  opacity: 0.5;
+}
+
+#transcript-script {
+  position: absolute;
+  top: 0px;
+  color: grey;
+}
+
+#transcript-spoken {
+  position: absolute;
+  top: 20px;
+  color: #DDD;
+}
+
+#get-pos {
+  color: transparent;
+}
+#get-pos-text {
+  color: transparent;
+}

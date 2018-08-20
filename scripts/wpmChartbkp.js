@@ -13,7 +13,6 @@ var groupData = {
   options: {
     drawPoints: false,
   },
-
 };
 groups.add(groupData);
 

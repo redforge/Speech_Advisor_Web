@@ -9,7 +9,7 @@ $(document).ready( function() {
   s = $('#script-full').html();
   s = s.replace(/\r\n/g, SPC);
   fullScript = s.split(' ');
-  console.log(fullScript);
+  // console.log(fullScript);
   setSelection(1);
 });
 

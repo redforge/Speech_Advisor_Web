@@ -8,8 +8,8 @@ function restoreDefaultLeniency() {
   matchOff = 0.5;
   matchOffDiff = 0.1;
 
-  skipRangeForward = 10;
-  skipRangeBackward = 5;
+  skipRangeForward = 15;
+  skipRangeBackward = 6;
 }
 restoreDefaultLeniency();
 

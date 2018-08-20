@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Speech Detection</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="fuzzyset.js"></script>
+  <script src="scripts/fuzzyset.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
@@ -12,37 +12,43 @@
 </head>
 <body>
 
-<div id="script-full" style="display: none;">According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black.
-</div>
+  <div id="script-full" style="display: none;">According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black.
+  </div>
 
-<div id="content-container">
-  <div id="transcript-container">
-    <div id="transcript-script">
-      <span class="dark" id="transcript-script-spoken"></span><span id="transcript-script-unspoken"></span>
+  <div id="content-container">
+    <div id="transcript-container">
+
+      <div id="transcript-script">
+        <span class="dark" id="transcript-script-spoken"></span><span id="transcript-script-unspoken"></span>
+      </div>
+      <div>
+        <span id="get-pos-text"></span>
+        <span id="get-pos">|</span>
+      </div>
     </div>
-    <div>
-      <span id="get-pos-text"></span>
-      <span id="get-pos">|</span>
+
+    <div id="sidebar">
+      <div id="wpm-ticker-bg" class="shaded-display unset"> <h2> Speed </h2> <h3> <span id="wpm-ticker-number"></span>wpm </h3> </div>
+      <div class="clear"></div>
+      <div class="chart-fill"></div>
+      <div class="chart" id="visualization"></div>
+
+      <div id="vol-ticker-bg" class="shaded-display unset"> <h2> Volume </h2> <h3> <span id="vol-ticker-number"></span>louds </h3> </div>
+      <div class="clear"></div>
+      <div class="chart-fill"></div>
+      <div class="chart" id="visualization2"></div>
     </div>
   </div>
 
-  <div id="sidebar">
-    <div id="wpm-bg" class="shaded-display good"> <h2> Speed </h2> <h3> <span id="wpm-display"></span>wpm </h3> </div>
-    <div class="clear"/>
-    <div class="chart-fill"></div>
-    <div class="chart" id="visualization"/>
-  </div>
-</div>
+  <script src="scripts/liveText.js"></script>
 
-
-
-<script src="voice.js"></script>
-<script src="markup.js"></script>
-<script src="processWord.js"></script>
-<script src="leniencyAdjustment.js"></script>
-<script src="countWords.js"></script>
-<script src="charts.js"></script>
-
+  <script src="scripts/countWords.js"></script>
+  <script src="scripts/voice.js"></script>
+  <script src="scripts/markup.js"></script>
+  <script src="scripts/processWord.js"></script>
+  <script src="scripts/leniencyAdjustment.js"></script>
+  <script src="scripts/volume.js"></script>
+  <script src="scripts/graphs.js"></script>
 
 
 

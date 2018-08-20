@@ -12,10 +12,16 @@ const WPM_THS = {
 }
 
 function countWordsIntrim(numWords) {
+  //if (numWords > numIntrimWords+1) numWords = numIntrimWords+1;
+
   if (numWords > numIntrimWords) {
-    countWords(numWords - numIntrimWords);
-    numIntrimWords = numWords;
+    countWords(1);
+    numIntrimWords++;
   }
+  // if (numWords > numIntrimWords) {
+  //   countWords(numWords - numIntrimWords);
+  //   numIntrimWords = numWords;
+  // }
 }
 function countWordsFinal (numWords) {
   if (numWords > numIntrimWords) countWords(numWords - numIntrimWords);
@@ -27,31 +33,30 @@ function countWords(numWords) {
   var curTime = new Date();
   if (prevWordTime != null) {
     var timeDiff = curTime - prevWordTime;
-    for (i=0; i<numWords; i++) wordTimes.push(timeDiff/numWords);
-    if(wordTimes.length > RECORD_LENGTH) wordTimes = wordTimes.slice(1, RECORD_LENGTH);
-    calcWps();
+    for (i=0; i<numWords; i++) {
+      wordTimes.push(timeDiff/numWords);
+      if (wordTimes.length > RECORD_LENGTH) wordTimes = wordTimes.slice(1, wordTimes.length);
+    }
+    console.log(wordTimes);
+    calcWpm();
   }
   prevWordTime = curTime;
 }
 
-function calcWps() {
+function calcWpm() {
   var avgTime = 0;
+  var totalDivisor = 0;
+  for (i=Math.ceil(wordTimes.length/4); i<wordTimes.length; i++) {
+   avgTime += wordTimes[i];
+   totalDivisor++;
+  }
   for (i=0; i<wordTimes.length; i++) {
    avgTime += wordTimes[i];
+   totalDivisor++;
   }
-  avgTime /= wordTimes.length;
+  avgTime /= totalDivisor;
 
   wpm = 60/(avgTime/1000);
-  $('#wpm-display').html(Math.round(wpm));
 
-  //Display BG
-  function sc(className) {
-    $('#wpm-bg').prop('class','shaded-display');
-    $('#wpm-bg').addClass(className);
-  }
-  if (wpm > WPM_THS.medTop) sc('bad');
-  else if (wpm > WPM_THS.goodTop) sc('med');
-  else if (wpm > WPM_THS.goodBottom) sc('good');
-  else if (wpm > WPM_THS.medBottom) sc('med');
-  renderStep();
+  updateTicker('wpm', wpm/3, wpm);
 }

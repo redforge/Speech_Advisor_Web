@@ -4,14 +4,14 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 
 const recognition = new SpeechRecognition();
 recognition.interimResults = true;
-recognition.continuous = true;
+// recognition.continuous = true;
 
 recognition.addEventListener('result', e => {
   processSpeech(results=e.results[0][0], e.results[0].isFinal);
 });
 
 recognition.addEventListener('end', e => {
-  console.log('restarting');
+  if (LOG_LEVEL >= 1) console.log('restarting');
   recognition.start();
 });
 

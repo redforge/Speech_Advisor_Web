@@ -8,7 +8,7 @@ var groups = new vis.DataSet();
 var groupData = {
   id: 0,
   content: "Group Name",
-  style: 'stroke: black; stroke-width: 10px; stroke-linecap: round;',
+  style: 'stroke: black; stroke-width: 10px;',
   options: {
     drawPoints: false,
   },
@@ -42,10 +42,13 @@ var wpmGraph = new vis.Graph2d(containerWpm, datasetWpm, groups, options);
 var volGraph = new vis.Graph2d(containerVol, datasetVol, groups, options);
 
 function startGraphing() {
+  renderStep();
+}
+function resetGraphs() {
   datasetWpm.clear();
   datasetVol.clear();
-  
-  renderStep();
+  wpmGraph.moveTo(vis.moment().add(-60, 'seconds'));
+  volGraph.moveTo(vis.moment().add(-60, 'seconds'));
 }
 
 function yWpm() {
@@ -119,6 +122,3 @@ function addDataPointVol() {
   datasetVol.remove(oldIds);
   updateTicker('vol', thisY, thisY);
 }
-
-wpmGraph.moveTo(vis.moment());
-volGraph.moveTo(vis.moment());

@@ -1,0 +1,40 @@
+.correction {
+  transition-duration: 0.1s;
+  position: absolute;
+  background-color: var(--bad-color);
+  color: #FFF;
+  border: 1px solid white;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  padding: 2px 5px;
+}
+.correction:hover {
+  border-color: transparent;
+  box-shadow: 0.5px 0.5px 10px 1px #3333, 0 0 0 2px white;
+  z-index: 10;
+}
+.correction.medium {
+  background-color: var(--med-color);
+}
+
+.intrim {
+  opacity: 0.5;
+}
+
+#dictation-transcript-script {
+  position: absolute;
+  top: 0px;
+  color: grey;
+}
+
+#transcript-spoken {
+  position: absolute;
+  top: 20px;
+  color: #DDD;
+}
+#get-pos {
+  color: transparent;
+}
+#get-pos-text {
+  color: transparent;
+}

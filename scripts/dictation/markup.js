@@ -5,13 +5,13 @@ const SPC = ' ';
 var currentCorrections = [];
 var finalCorrections = [];
 
-$(document).ready( function() {
+function grabScript() {
   s = $('#script-full').html();
   s = s.replace(/\r\n/g, SPC);
   fullScript = s.split(' ');
   if(LOG_LEVEL >= 4) console.log(fullScript);
   setSelection(1);
-});
+}
 
 function setSelection(index) {
   const fsl = fullScript.length;

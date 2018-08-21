@@ -1,0 +1,85 @@
+:root {
+  --bad-color: #ed665a;
+  --med-color: #edc85a;
+  --good-color: #4D4;
+  --neutral-color: #5aafed;
+  --med-grad: linear-gradient(#DD4, #FA5);
+  --sidebar-margin: 12px;
+  --graph-height: 20vh;
+  --graph-width: calc(25vw - var(--sidebar-margin) * 2);
+  --graph-heading-height: 55px;
+  /* --chart-grad: linear-gradient(
+    #F44 17%,
+    #EC5 17%, #EC5 33%,
+    #5E5 33%, #3C3 66%,
+    #EC5 66%, #EC5 83%,
+    #F44 83%); */
+  --chart-grad: linear-gradient(
+      var(--bad-color) 17%,
+      var(--med-color) 17%, var(--med-color) 33%,
+      var(--good-color) 33%, var(--good-color) 66%,
+      var(--med-color) 66%, var(--med-color) 83%,
+      var(--bad-color) 83%);
+}
+body {
+  padding: 0;
+  margin: 0;
+  /* no scrollbar hack: overflow-x: hidden; */
+}
+
+.hidden {
+  display: none;
+}
+
+#content-container {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+#transcript-scroll {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 25%;
+  /* no scrollbar hack: right: -15px; */
+  overflow-y: scroll;
+}
+
+#transcript-outer {
+  position: absolute;
+  left: 7.5%;
+  top: 0;
+  /* no scrollbar hack: width: 60%; */
+  width: 85%;
+  font-size: 20px;
+  line-height: 60px;
+  margin: 0;
+  padding: 0;
+}
+#transcript-outer h1 {
+  color: var(--neutral-color);
+  width: 100%;
+  border-bottom: 2px solid var(--neutral-color);
+}
+#transcript-container {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  font-size: 20px;
+  line-height: 60px;
+}
+
+.dark {
+  color: black;
+}

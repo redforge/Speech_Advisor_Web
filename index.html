@@ -4,27 +4,42 @@
   <meta charset="UTF-8">
   <title>Speech Detection</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="scripts/fuzzyset.js"></script>
+  <script src="scripts/lib/fuzzyset.js"></script>
+  <script src="scripts/common.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="styles/common.css">
+  <link rel="stylesheet" type="text/css" href="styles/dictation.css">
+  <link rel="stylesheet" type="text/css" href="styles/sidebar.css">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600&amp;subset=latin-ext" rel="stylesheet">
+
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
 
 </head>
 <body>
-
-  <div id="script-full" style="display: none;">According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black.
-  </div>
-
   <div id="content-container">
-    <div id="transcript-container">
+    <div id="transcript-scroll">
+    <div id="transcript-outer">
+      <h1> Script Name </h1>
 
-      <div id="transcript-script">
-        <span class="dark" id="transcript-script-spoken"></span><span id="transcript-script-unspoken"></span>
+      <div id="transcript-container">
+
+        <div id="edit-mode-script">
+          <div id="script-full" contenteditable="true">According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black.
+          </div>
+        </div>
+
+        <div id="dictation-transcript-script" class="hidden">
+          <span class="dark" id="transcript-script-spoken"></span><span id="transcript-script-unspoken"></span>
+        </div>
+        <div>
+          <span id="get-pos-text"></span>
+          <span id="get-pos">|</span>
+        </div>
       </div>
-      <div>
-        <span id="get-pos-text"></span>
-        <span id="get-pos">|</span>
-      </div>
+    </div>
     </div>
 
     <div id="sidebar">
@@ -43,22 +58,26 @@
       </div>
 
       <div class="sidebar-block">
-        <button onclick="startDictation();" class="good" id="start-dication-button"> Start Dictation </button>
-        <button onclick="stopDictation();" class="bad hidden" id="stop-dication-button" > Stop Dictation </button>
+        <button onclick="startDictation();" class="good" id="start-dictation-button"> Start Dictation </button>
+        <span id="paused-dictation-buttons" class="hidden">
+          <button onclick="resumeDictation();" style="width: 50%; float: left;"> Resume </button>
+          <button onclick="endDictation();" class="bad" style="width: 50%;"> End </button>
+        </span>
+        <button onclick="pauseDictation();" class="med hidden" id="stop-dictation-button" > Pause Dictation </button>
       </div>
     </div>
   </div>
 
-  <script src="scripts/meta.js"></script>
+  <script src="scripts/dictation/meta.js"></script>
 
-  <script src="scripts/liveText.js"></script>
-  <script src="scripts/countWords.js"></script>
-  <script src="scripts/voice.js"></script>
-  <script src="scripts/markup.js"></script>
-  <script src="scripts/processWord.js"></script>
-  <script src="scripts/leniencyAdjustment.js"></script>
-  <script src="scripts/volume.js"></script>
-  <script src="scripts/graphs.js"></script>
+  <script src="scripts/dictation/liveText.js"></script>
+  <script src="scripts/dictation/countWords.js"></script>
+  <script src="scripts/dictation/voice.js"></script>
+  <script src="scripts/dictation/markup.js"></script>
+  <script src="scripts/dictation/processWord.js"></script>
+  <script src="scripts/dictation/leniencyAdjustment.js"></script>
+  <script src="scripts/dictation/volume.js"></script>
+  <script src="scripts/dictation/graphs.js"></script>
 
 
 

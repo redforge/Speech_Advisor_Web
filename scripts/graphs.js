@@ -1,7 +1,5 @@
-
 var DELAY = 250; // delay in ms to add new data points
 
-// create a wpmGraph with an (currently empty) datasetWpm
 var containerWpm = document.getElementById('visualization');
 var containerVol = document.getElementById('visualization2');
 var datasetWpm = new vis.DataSet();
@@ -18,7 +16,7 @@ var groupData = {
 groups.add(groupData);
 
 var options = {
-  start: vis.moment(), // changed so its faster
+  start: vis.moment(),
   end: vis.moment().add(60, 'seconds'),
   dataAxis: {
     left: {
@@ -43,6 +41,12 @@ var options = {
 var wpmGraph = new vis.Graph2d(containerWpm, datasetWpm, groups, options);
 var volGraph = new vis.Graph2d(containerVol, datasetVol, groups, options);
 
+function startGraphing() {
+  datasetWpm.clear();
+  datasetVol.clear();
+  
+  renderStep();
+}
 
 function yWpm() {
   return wpm/3;
@@ -54,7 +58,6 @@ function yVol() {
 function renderStep() {
   addDataPointVol();
   addDataPointWpm();
-
 
   var now = vis.moment();
   var range = wpmGraph.getWindow();
@@ -73,9 +76,9 @@ function renderStep() {
   if (now > range.end)
     volGraph.setWindow(now-interval, now, {animation: false});
 
-  setTimeout(renderStep, DELAY);
+  if(dictationActive) setTimeout(renderStep, DELAY);
 }
-renderStep();
+
 
 function addDataPointWpm() {
   var now = vis.moment();

@@ -1,6 +1,6 @@
 // Courtesy www.0AV.com, LGPL license or as set by forked host, Travis Holliday, https://codepen.io/travisholliday/pen/gyaJk (modified by fixing for browser security change)
 $(document).ready(function() {
-  startVolumeMonitor();
+  //startVolumeMonitor();
 });
 
 var currentVolume = 0;
@@ -8,9 +8,10 @@ var volumeMetric = 0;
 var volumeHistory = [];
 var backgroundClip = 0;
 const VOLUME_HISTORY_LENGTH = 10;
+var streamVar;
 
 function startVolumeMonitor(){
-  console.log ("starting...");
+  if (LOG_LEVEL>=3) console.log ("Starting Volume Monitor");
   navigator.getUserMedia = navigator.getUserMedia ||
   navigator.webkitGetUserMedia ||
   navigator.mozGetUserMedia;
@@ -19,6 +20,7 @@ function startVolumeMonitor(){
    audio: true
   },
   function(stream) {
+    streamVar = stream;
     audioContext = new AudioContext();
     analyser = audioContext.createAnalyser();
     microphone = audioContext.createMediaStreamSource(stream);
@@ -61,4 +63,9 @@ function startVolumeMonitor(){
   } else {
     console.log("getUserMedia not supported! Try chrome...");
   }
+}
+
+function stopVolumeMonitor() {
+  //Close all audio streams, should only be one but doesn't hurt to be extra.
+  streamVar.getAudioTracks().forEach(track => track.stop());
 }

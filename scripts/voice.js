@@ -11,18 +11,18 @@ recognition.addEventListener('result', e => {
 });
 
 recognition.addEventListener('end', e => {
-  if (LOG_LEVEL >= 1) console.log('restarting');
-  recognition.start();
+  if (LOG_LEVEL >= 2) console.log('restarting SpeechRecognition');
+  if (dictationActive) recognition.start();
 });
 
 var wordIndexOffset = 0; //Currently unused
 
-recognition.start();
 function processSpeech(results, isFinal) {
   words = results.transcript.split(' ');
   currentTranscript = [];
   clearCurrentCorrections();
   if (isFinal) {
+    if(LOG_LEVEL >= 4) console.log('Finalized: '+words);
     //If its final
     recognition.stop();
     countWordsFinal(words.length-wordIndexOffset);
@@ -34,6 +34,7 @@ function processSpeech(results, isFinal) {
     currentTranscript = [];
   } else {
     //If its intrim
+    if(LOG_LEVEL >= 5) console.log('Intrim: '+words);
     countWordsIntrim(words.length-wordIndexOffset);
     for (wIndex=wordIndexOffset; wIndex<words.length; wIndex++) {
       currentWord = words[wIndex];

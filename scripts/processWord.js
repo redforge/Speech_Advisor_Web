@@ -1,9 +1,8 @@
 var minMatchNextWord, matchOff, matchOffDiff, skipRangeForward, skipRangeBackward;
 var simplifyIntrim = false;
 
-//TODO: Reduce repeat errors by storing offsets
 function restoreDefaultLeniency() {
-  minMatchNextWord = 0.1;
+  minMatchNextWord = 0.001;
 
   matchOff = 0.5;
   matchOffDiff = 0.1;
@@ -16,14 +15,14 @@ restoreDefaultLeniency();
 function processSingleWord(index, word, intrim) {
   //Check NEXT WORD for match
   f = FuzzySet();
-  f.add( fullScript[index] );
-  if (f.get(' '+word, minScore=minMatchNextWord).length > 0) {
+  f.add( fullScript[index]);
+
+  if (f.get(''+word, false, minMatchNextWord)) {
     currentTranscript.push(fullScript[index]);
     errorCounter -= 1;
     checkLeniency();
     return fullScript[index];
   }
-
   //If expected next word wasn't found, continue to all this error correction...
 
   //fail() is called if (and only if) we fail to find anything. Must be called with 'return fail()' else the main function won't stop

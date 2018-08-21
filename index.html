@@ -28,20 +28,30 @@
     </div>
 
     <div id="sidebar">
-      <div id="wpm-ticker-bg" class="shaded-display unset"> <h2> Speed </h2> <h3> <span id="wpm-ticker-number"></span>wpm </h3> </div>
-      <div class="clear"></div>
-      <div class="chart-fill"></div>
-      <div class="chart" id="visualization"></div>
+      <div class="sidebar-block">
+        <div id="wpm-ticker-bg" class="shaded-display unset"> <h2> Speed </h2> <h3> <span id="wpm-ticker-number"></span>wpm </h3> </div>
+        <div class="clear"></div>
+        <div class="chart-fill"></div>
+        <div class="chart" id="visualization"></div>
+      </div>
 
-      <div id="vol-ticker-bg" class="shaded-display unset"> <h2> Volume </h2> <h3> <span id="vol-ticker-number"></span>louds </h3> </div>
-      <div class="clear"></div>
-      <div class="chart-fill"></div>
-      <div class="chart" id="visualization2"></div>
+      <div class="sidebar-block">
+        <div id="vol-ticker-bg" class="shaded-display unset"> <h2> Volume </h2> <h3> <span id="vol-ticker-number"></span>louds </h3> </div>
+        <div class="clear"></div>
+        <div class="chart-fill"></div>
+        <div class="chart" id="visualization2"></div>
+      </div>
+
+      <div class="sidebar-block">
+        <button onclick="startDictation();" class="good" id="start-dication-button"> Start Dictation </button>
+        <button onclick="stopDictation();" class="bad hidden" id="stop-dication-button" > Stop Dictation </button>
+      </div>
     </div>
   </div>
 
-  <script src="scripts/liveText.js"></script>
+  <script src="scripts/meta.js"></script>
 
+  <script src="scripts/liveText.js"></script>
   <script src="scripts/countWords.js"></script>
   <script src="scripts/voice.js"></script>
   <script src="scripts/markup.js"></script>

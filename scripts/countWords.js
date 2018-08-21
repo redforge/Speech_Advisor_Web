@@ -1,27 +1,24 @@
 //WPM metric
-var wordTimes = [];
-var numIntrimWords = 0;
-var wpm = 0;
-var prevWordTime;
+var wordTimes, numIntrimWords, wpm, prevWordTime;
 const RECORD_LENGTH = 20;
-const WPM_THS = {
-  medTop: 260,
-  goodTop: 200,
-  goodBottom: 100,
-  medBottom: 40
+
+function resetWpmValues() {
+  wordTimes = [];
+  numIntrimWords = 0;
+  wpm = 0;
+  prevWordTime;
 }
 
 function countWordsIntrim(numWords) {
-  //if (numWords > numIntrimWords+1) numWords = numIntrimWords+1;
-
+  //if (numWords+2 > numIntrimWords) numIntrimWords = numWords+2;
   if (numWords > numIntrimWords) {
     countWords(1);
     numIntrimWords++;
   }
-  // if (numWords > numIntrimWords) {
-  //   countWords(numWords - numIntrimWords);
-  //   numIntrimWords = numWords;
-  // }
+  /*if (numWords > numIntrimWords) {
+    countWords(numWords - numIntrimWords);
+    numIntrimWords = numWords;
+  }*/
 }
 function countWordsFinal (numWords) {
   if (numWords > numIntrimWords) countWords(numWords - numIntrimWords);
@@ -37,7 +34,7 @@ function countWords(numWords) {
       wordTimes.push(timeDiff/numWords);
       if (wordTimes.length > RECORD_LENGTH) wordTimes = wordTimes.slice(1, wordTimes.length);
     }
-    console.log(wordTimes);
+    if (LOG_LEVEL >= 5) console.log(wordTimes);
     calcWpm();
   }
   prevWordTime = curTime;

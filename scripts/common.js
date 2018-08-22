@@ -1,6 +1,8 @@
-//Clear formatting on pasted text
-document.querySelector('div[contenteditable="true"]').addEventListener("paste", function(e) {
-  e.preventDefault();
-  var text = e.clipboardData.getData("text/plain");
-  document.execCommand("insertHTML", false, text);
+$(document).ready( function() {
+  autoHeight($('#script-full'));
 });
+
+function autoHeight(element) {
+  $(element).css('height','5px');
+  $(element).css('height', $(element).prop('scrollHeight')+50+'px');
+}

@@ -5,10 +5,13 @@
   <title>Speech Detection</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="scripts/lib/fuzzyset.js"></script>
+
   <script src="scripts/common.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="styles/common.css">
+  <link rel="stylesheet" type="text/css" href="styles/edit.css">
   <link rel="stylesheet" type="text/css" href="styles/dictation.css">
   <link rel="stylesheet" type="text/css" href="styles/sidebar.css">
 
@@ -22,13 +25,14 @@
   <div id="content-container">
     <div id="transcript-scroll">
     <div id="transcript-outer">
-      <h1> Script Name </h1>
+      <h1> Bee Movie &amp; Knuckles </h1>
 
       <div id="transcript-container">
 
         <div id="edit-mode-script">
-          <div id="script-full" contenteditable="true">According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black.
-          </div>
+          <textarea id="script-full" onkeydown="autoHeight(this);" onkeyup="autoHeight(this);">
+            According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black.
+          </textarea>
         </div>
 
         <div id="dictation-transcript-script" class="hidden">
@@ -51,7 +55,7 @@
       </div>
 
       <div class="sidebar-block">
-        <div id="vol-ticker-bg" class="shaded-display unset"> <h2> Volume </h2> <h3> <span id="vol-ticker-number"></span>louds </h3> </div>
+        <div id="vol-ticker-bg" class="shaded-display unset"> <h2> Volume </h2> <h3> <span id="vol-ticker-number"></span>% </h3> </div>
         <div class="clear"></div>
         <div class="chart-fill"></div>
         <div class="chart" id="visualization2"></div>

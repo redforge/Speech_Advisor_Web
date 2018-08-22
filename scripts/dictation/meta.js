@@ -4,7 +4,7 @@ var dictationActive;
 //2 - Major events only
 //4 - Most events
 //5 - Verbose
-const LOG_LEVEL = 2;
+const LOG_LEVEL = 4;
 
 function startDictation() {
   resetDictation();
